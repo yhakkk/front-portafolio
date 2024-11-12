@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+}
+
+#proyectos {
+    transition: transform 0.3s ease;
+  }
+  
+#proyectos:hover {
+    transform: scale(1.02); 
+  }
+  
+
+#sobre-mi {
+    transition: transform 0.3s ease;
+  }
+  
+#sobre-mi:hover {
+    transform: scale(1.02); 
+  }
+  
+#contacto {
+    transition: transform 0.3s ease;
+  }
+  
+#contacto:hover {
+    transform: scale(1.02); 
+  }
+  
+#header {
+    transition: transform 0.3s ease;
+  }
+  
+#header:hover {
+    transform: scale(1.1); 
+  }
+  
