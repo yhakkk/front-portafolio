@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import {
   Layout,
-  Menu,
   Card,
   Row,
   Col,
   Typography,
-  Button,
   List,
   Divider,
-  Avatar,
+  Space,
+  Collapse,
 } from "antd";
-
+import { LinkedinOutlined, InstagramOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 const { Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
+const { Panel } = Collapse;
 
 const Portfolio = () => {
   const [repos, setRepos] = useState([]);
@@ -45,28 +45,34 @@ const Portfolio = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Content style={{ padding: "20px" }}>
-        <section id="sobre-mi" >
+        <section id="sobre-mi">
           <Title level={2}>Sobre mí</Title>
-        
-          <Paragraph >
-            Soy un estudiante avanzado de Analista de Sistemas con una sólida
-            formación en desarrollo de software. Me apasiona la programación y
-            estoy comprometido en alcanzar mi máximo potencial profesional.
-            Busco constantemente nuevos desafíos que me permitan crecer y
-            adquirir nuevas habilidades
-
-            <List
-              style={{background:"#f1f2f3"}}
-              header={<div><strong>Aptitudes</strong></div>}
-              bordered
-              dataSource={aptitudes}
-              renderItem={(item) => (
-                <List.Item>
-                  <Typography.Text>{item}</Typography.Text>
-                </List.Item>
-              )}
-            />
-          </Paragraph>
+          <Row gutter={16}>
+            <Col span={12}>
+              <Paragraph>
+                Soy un estudiante avanzado de Analista de Sistemas con una
+                sólida formación en desarrollo de software. Me apasiona la
+                programación y estoy comprometido en alcanzar mi máximo
+                potencial profesional. Busco constantemente nuevos desafíos que
+                me permitan crecer y adquirir nuevas habilidades.
+              </Paragraph>
+            </Col>
+            <Col span={12}>
+              <Collapse bordered={false} defaultActiveKey={["1"]}>
+                <Panel header={<Title level={3}>Aptitudes</Title>} key="0">
+                  <List
+                    bordered
+                    dataSource={aptitudes}
+                    renderItem={(item) => (
+                      <List.Item>
+                        <Typography.Text>{item}</Typography.Text>
+                      </List.Item>
+                    )}
+                  />
+                </Panel>
+              </Collapse>
+            </Col>
+          </Row>
         </section>
 
         <Divider />
@@ -109,7 +115,7 @@ const Portfolio = () => {
           <Title level={2}>Contacto</Title>
           <Paragraph>
             Puedes contactarme a través de mi correo electrónico:{" "}
-            <a href="tomasblanco.contact@gmail.com">
+            <a href="mailto:tomasblanco.contact@gmail.com">
               tomasblanco.contact@gmail.com
             </a>
             .
@@ -117,8 +123,24 @@ const Portfolio = () => {
         </section>
       </Content>
 
-      <Footer style={{ textAlign: "center", backgroundColor:"#f1f2f3"}}>
-        Portafolio creado por Tomas Aníbal Blanco ©2024
+      <Footer style={{ textAlign: "center", backgroundColor: "#f1f2f3" }}>
+        <Space style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
+          <a
+            href="https://www.linkedin.com/in/tomasblanco19/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <LinkedinOutlined style={{ fontSize: "24px" }} />
+          </a>
+          <a
+            href="https://www.instagram.com/tomiblanco3"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InstagramOutlined style={{ fontSize: "24px" }} />
+          </a>
+        </Space>
+        <div>Portafolio creado por Tomas Aníbal Blanco ©2024</div>
       </Footer>
     </Layout>
   );
